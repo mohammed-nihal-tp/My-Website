@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mohammed Nihal TP - Personal Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+            overflow-x: hidden;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #000;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+        .nav-links li a {
+            transition: color 0.3s;
+        }
+        .nav-links li a:hover {
+            color: #666;
+        }
+
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            text-align: center;
+            position: relative;
+        }
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://via.placeholder.com/1920x1080/000000/ffffff?text=Background+Image') no-repeat center/cover;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            animation: fadeInUp 1.2s ease-out;
+        }
+        .btn {
+            padding: 12px 24px;
+            background: #000;
+            color: #fff;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #333;
+        }
+
+        /* About Section */
+        #about {
+            background: #f9f9f9;
+        }
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        .about-text h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .about-image img {
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        /* Education Section */
+        #education {
+            background: #fff;
+        }
+        .education-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .education-item {
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .education-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        .education-item h3 {
+            margin-bottom: 10px;
+        }
+
+        /* Certifications Section */
+        #certifications {
+            background: #f9f9f9;
+        }
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .certification-card {
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .certification-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        .certification-card h3 {
+            margin-bottom: 10px;
+        }
+
+        /* Skills Section */
+        #skills {
+            background: #fff;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .skill-card {
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        .skill-card h3 {
+            margin-bottom: 10px;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: #f9f9f9;
+        }
+        .contact-info {
+            text-align: center;
+        }
+        .contact-info h2 {
+            margin-bottom: 20px;
+        }
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .contact-links a {
+            padding: 10px 20px;
+            background: #000;
+            color: #fff;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .contact-links a:hover {
+            background: #333;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #000;
+            color: #fff;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            .nav-links {
+                display: none; /* Hide nav on mobile; add hamburger menu if needed */
+            }
+            .contact-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Mohammed Nihal TP</div>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <div class="hero-content">
+            <h1>Hi, I'm Mohammed Nihal</h1>
+            <p>Highly driven AI Tools Expert specializing in Prompt Engineering, Python-based Data Analysis, and Cloud Automation.</p>
+            <a href="#about" class="btn">Learn More</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>About Me</h2>
+                <p>Highly driven AI Tools Expert specializing in Prompt Engineering, Python-based Data Analysis, and Cloud Automation. Proven technical background in hardware and communication systems troubleshooting, with a history of significantly contributing to IT infrastructure projects and ensuring maximum system uptime.</p>
+            </div>
+            <div class="about-image">
+                <img src="photo.jpg" alt="Mohammed Nihal TP" />
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <h2 style="text-align: center; margin-bottom: 40px;">Education</h2>
+        <div class="education-list">
+            <div class="education-item">
+                <h3>DIPLOMA IN COMPUTER ENGINEERING</h3>
+                <p>SEETHI SAHIB MEMORIAL POLYTECHNIC | 2021-2024</p>
+            </div>
+            <div class="education-item">
+                <h3>SSLC</h3>
+                <p>PPTMY HIGHER SECONDARY SCHOOL | 2021</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications">
+        <h2 style="text-align: center; margin-bottom: 40px;">Certifications</h2>
+        <div class="certifications-grid">
+            <div class="certification-card">
+                <h3>Prompt Engineering</h3>
+                <p>IBM Cognitive Class</p>
+            </div>
+            <div class="certification-card">
+                <h3>Data Science using Python</h3>
+                <p>IBM Cognitive Class</p>
+            </div>
+            <div class="certification-card">
+                <h3>Data Analysis with Python</h3>
+                <p>IBM Cognitive Class</p>
+            </div>
+            <div class="certification-card">
+                <h3>Cloud Computing</h3>
+                <p>IBM Cognitive Class</p>
+            </div>
+            <div class="certification-card">
+                <h3>AI Tools Workshop</h3>
+                <p>Be10x</p>
+            </div>
+            <div class="certification-card">
+                <h3>Cyber Security Assessment</h3>
+                <p>LearnTube</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 style="text-align: center; margin-bottom: 40px;">Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>Prompt Engineering & Automation</h3>
+                <p>Expertise in creating and optimizing prompts for AI tools.</p>
+            </div>
+            <div class="skill-card">
+                <h3>AI Tools</h3>
+                <p>Proficient with ChatGPT, Gemini, Claude, Perplexity, and more.</p>
+            </div>
+            <div class="skill-card">
+                <h3>Cloud Computing</h3>
+                <p>Experience with IBM Cloud and Google Cloud.</p>
+            </div>
+            <div class="skill-card">
+                <h3>Cybersecurity Awareness</h3>
+                <p>Knowledge in security best practices and assessments.</p>
+            </div>
+            <div class="skill-card">
+                <h3>Adaptive to Fast-paced Environments</h3>
+                <p>Thrives in dynamic technological settings.</p>
+            </div>
+            <div class="skill-card">
+                <h3>Python Programming & Data Analysis</h3>
+                <p>Skilled in Python for data manipulation and analysis.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-info">
+            <h2>Get In Touch</h2>
+            <div class="contact-links">
+                <a href="http://www.linkedin.com/in/mohammed-nihal-tp-81436625a" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="tel:+917994799733">Phone: +91 79947 99733</a>
+                <a href="mailto:nihalibnusajid@gmail.com">Email: nihalibnusajid@gmail.com</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Mohammed Nihal TP. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth Scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
